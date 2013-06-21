@@ -1,5 +1,26 @@
-CharToPinyin
-============
+CharToPinyin (Deprecated!!!)
+============================
+
+Notice
+------
+
+**Please do not fork or use this project again, because Core Foundation has already implemented the Chinese to Pinyin methods for us!!!**
+
+Sample code:
+
+```objc
+NSMutableString *pinyin = [@"中文测试" mutableCopy];
+CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
+// CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
+NSLog(@"%@", pinyin); 
+// Output: zhōng wén cè shì
+// Uncomment the second call to CFStringTransform will out put: zhong wen ce shi
+```
+
+Please refer Apple documentation for more usage for `CFStringTransform` function.
+
+Description
+-----------
 
 This is a small Chinese pinyin library based on Sunrise Spell, a C# implementation.
 
@@ -19,6 +40,11 @@ Now only have one convinient method `- abbreviation:` for first letter only abbr
 // Will return: zw
 NSString *result = [[CharToPinyin shared] abbreviation:@"中文"];
 ```
+
+Limitation
+----------
+
+This class can only inteprete Chinese characters in GB2312 charset.
 
 License
 -------
